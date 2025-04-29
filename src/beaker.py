@@ -1,0 +1,2 @@
+class Beaker:
+    pass
