@@ -1,2 +1,7 @@
+from game_parameters import BEAKER_CAPACITY
+
+
 class Beaker:
-    pass
+    def __init__(self, contents=None):
+        self.contents = contents if contents else []
+        self.capacity = BEAKER_CAPACITY
