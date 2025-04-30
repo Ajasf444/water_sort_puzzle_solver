@@ -22,6 +22,10 @@ class Beaker:
     def _get_volume_remaining(self):
         return self._capacity - self._occupied_volume
 
+    def pour(self, dest: "Beaker"):
+        # TODO: complete pour logic
+        pass
+
 
 if __name__ == "__main__":
     pass
