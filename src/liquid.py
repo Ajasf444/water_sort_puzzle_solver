@@ -6,8 +6,16 @@ class Liquid:
         self._color = color
         self._amount = amount
 
-    def get_color(self):
+    def get_color(self) -> Color:
         return self._color
 
-    def get_amount(self):
+    def get_amount(self) -> int:
         return self._amount
+
+    def __repr__(self):
+        return f"{self.get_color()}: {self.get_amount()}"
+
+
+if __name__ == "__main__":
+    test_liquid = Liquid(Color.YELLOW, 2)
+    print(test_liquid)
