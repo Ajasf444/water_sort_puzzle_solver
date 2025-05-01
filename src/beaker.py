@@ -10,7 +10,7 @@ class Beaker:
         self._occupied_volume = self._calculate_volume()
         if not self._volume_is_legal():
             raise Exception("Volume of contents exceeds beaker capacity.")
-        self._volume_remaining = self._get_volume_remaining()
+        self._volume_remaining = self.calculate_volume_remaining()
 
     def _volume_is_legal(self) -> bool:
         return self._occupied_volume <= self._capacity
@@ -23,13 +23,18 @@ class Beaker:
             volume += liquid.get_volume()
         return volume
 
-    def _get_volume_remaining(self) -> int:
+    def _calculate_volume_remaining(self) -> int:
         return self._capacity - self._occupied_volume
+
+    def _get_volume_remaining(self) -> int:
+        return self._volume_remaining
 
     def pour(self, dest: "Beaker") -> bool:
         # TODO: complete pour logic
+        # if enough space in dest and colors match or dest is empty can pour
         start_color, start_volume = self._get_top_color(), self._get_top_volume()
         dest_color, dest_volume = dest._get_top_color(), dest._get_top_volume()
+        dest_is_empty = dest._get_volume_remaining() == 0
         if start_color is not dest_color:
             return False
         # TODO: handle destination beaker volume_remaining check
