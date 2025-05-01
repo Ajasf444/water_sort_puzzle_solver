@@ -2,18 +2,18 @@ from color import Color
 
 
 class Liquid:
-    def __init__(self, color: Color = None, amount: int = None):
+    def __init__(self, color: Color = None, volume: int = None):
         self._color = color
-        self._amount = amount
+        self._volume = volume
 
     def get_color(self) -> Color:
         return self._color
 
-    def get_amount(self) -> int:
-        return self._amount
+    def get_volume(self) -> int:
+        return self._volume
 
     def __repr__(self):
-        return f"{self.get_color()}: {self.get_amount()}"
+        return f"{self.get_color()}: {self.get_volume()}"
 
 
 if __name__ == "__main__":
