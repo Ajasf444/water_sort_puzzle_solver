@@ -13,7 +13,7 @@ class Liquid:
         return self._volume
 
     def __repr__(self):
-        return f"{self.get_color()}: {self.get_volume()}"
+        return f"({self.get_color()}, {self.get_volume()})"
 
 
 if __name__ == "__main__":
