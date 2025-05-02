@@ -30,23 +30,22 @@ class Beaker:
         return self._volume_remaining
 
     def pour(self, dest: "Beaker") -> bool:
-        # TODO: complete pour logic
-        # if enough space in dest and colors match or dest is empty can pour
-        start_color, start_volume = self._get_top_color(), self._get_top_volume()
-        dest_color, dest_volume = dest._get_top_color(), dest._get_top_volume()
-        dest_is_empty = dest._get_volume_remaining() == 0
-        if start_color is not dest_color:
-            return False
-        # TODO: handle destination beaker volume_remaining check
-        if self._occupied_volume == 0:
+        if self._valid_pour(dest):
+            # TODO: complete pour logic
             return True
-        pass
+        return False
 
     def _get_top_color(self) -> Color:
         return self._contents[-1].get_color()
 
     def _get_top_volume(self) -> int:
         return self._contents[-1].get_volume()
+
+    def _valid_pour(self, dest: "Beaker") -> bool:
+        start_color, start_volume = self._get_top_color(), self._get_top_volume()
+        dest_color, dest_volume = dest._get_top_color(), dest._get_top_volume()
+        dest_is_empty = dest._get_volume_remaining() == 0
+        return True or False
 
 
 if __name__ == "__main__":
