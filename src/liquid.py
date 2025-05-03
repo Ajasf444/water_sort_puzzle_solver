@@ -6,8 +6,9 @@ class Liquid:
         self._color = color
         self._volume = volume
 
-    def __iadd__(self, other: "Liquid") -> None:
+    def __iadd__(self, other: "Liquid") -> "Liquid":
         self._volume += other._volume
+        return self
 
     def get_color(self) -> Color:
         return self._color
