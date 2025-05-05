@@ -17,13 +17,10 @@ class Beaker:
         if self.is_empty():
             return "Beaker is empty."
         contents = (
-            f"Beaker contains: {', '.join(str(liquid) for liquid in self._contents)}."
+            f"Beaker contains: {', '.join(str(liquid)
+                                          for liquid in self._contents)}."
         )
         return contents
-
-    def _append_liquid(self, liquid: Liquid = None) -> None:
-        self._contents.append(liquid)
-        self._update()
 
     def add_liquid(self, liquid: Liquid = None) -> None:
         if self.is_empty():
@@ -34,7 +31,7 @@ class Beaker:
 
     def pour(self, dest: "Beaker") -> bool:
         if self._valid_pour(dest):
-            liquid = self._extract_liquid()
+            liquid = self._pop_liquid()
             dest.add_liquid(liquid)
             return True
         return False
@@ -44,6 +41,10 @@ class Beaker:
 
     def _volume_is_legal(self) -> bool:
         return self._occupied_volume <= self._capacity
+
+    def _append_liquid(self, liquid: Liquid = None) -> None:
+        self._contents.append(liquid)
+        self._update()
 
     def _calculate_volume(self) -> int:
         if not self._contents:
@@ -57,7 +58,7 @@ class Beaker:
         self._occupied_volume = self._calculate_volume()
         self._volume_remaining = self._calculate_volume_remaining()
 
-    def _extract_liquid(self, index: int = -1) -> Liquid:
+    def _pop_liquid(self, index: int = -1) -> Liquid:
         liquid = self._contents.pop(index)
         self._update()
         return liquid
