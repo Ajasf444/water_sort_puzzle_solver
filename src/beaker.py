@@ -29,6 +29,10 @@ class Beaker:
             self._contents[-1] += liquid
         self._update()
 
+    # TODO: add undo_pour()
+    def undo_pour(self, dest: "Liquid", amount: int = 0) -> None:
+        pass
+
     def pour(self, dest: "Beaker") -> bool:
         if self._valid_pour(dest):
             liquid = self._pop_liquid()
